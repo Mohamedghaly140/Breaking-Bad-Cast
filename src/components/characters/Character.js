@@ -1,10 +1,13 @@
 import React from 'react';
 import CharacterItem from './CharacterItem';
+import Spinner from '../ui/Spinner';
 
 const Character = ({ items, isLoading }) => {
-  return isLoading ? (
-    <h1>Loading...</h1>
-  ) : (
+  if (isLoading) {
+    return <Spinner />;
+  }
+
+  return (
     <section className="cards">
       {items.map(item => (
         <CharacterItem key={item.char_id} item={item} />
